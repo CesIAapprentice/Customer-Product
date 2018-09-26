@@ -19,6 +19,21 @@ public class ControllerOrderline {
 	
 // ---------------------------------------------------------
 // METHODS
+
+	public void addProductToOrderline(OrderLine orderline, Product product) {
+		if(!isProductInOrderline(orderline, product)){
+			orderline.getOrderlist().put(product, 1);
+		} else {
+			changeQuantityOfProductInOrderLine(orderline, product, 1);
+		}
+	}
+	
+	public void removeProductFromOrderline(OrderLine orderline, Product product) {
+		orderline.getOrderlist().remove(product);
+	}
+	
+// ---------------------------------------------------------
+// METHODS - HELPERS	
 	
 	public boolean isProductInOrderline(OrderLine orderline, Product product) {
 		return orderline.getOrderlist().containsKey(product); 
@@ -28,16 +43,7 @@ public class ControllerOrderline {
 		return orderline.getOrderlist().get(product);
 	}
 	
-	public void addProductToOrderline(OrderLine orderline, Product product, Integer quantity) {
-		if(!isProductInOrderline(orderline, product)){
-			orderline.getOrderlist().put(product, quantity);
-		} else {
-			orderline.getOrderlist().replace(product, howManyProductsInOrderline(orderline, product) + quantity);
-		}
-	}
-	
-	public void removeProductFromOrderline(OrderLine orderline, Product product, Integer quantity) {
-		orderline.getOrderlist().replace(product, howManyProductsInOrderline(orderline, product) - quantity);
-	}
-		
+	public void changeQuantityOfProductInOrderLine(OrderLine orderline, Product product, Integer quantity) {
+		orderline.getOrderlist().replace(product, howManyProductsInOrderline(orderline, product) + quantity);
+	}		
 }

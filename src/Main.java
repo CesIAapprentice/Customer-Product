@@ -4,12 +4,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import Controller.ControllerCustomer;
+import Controller.ControllerOrder;
+import Controller.ControllerOrderline;
 import Controller.ControllerProduct;
-import Controller.ControllerWarehouse;
 import Model.Order;
 import Model.PersonalCustomer;
 import Model.Product;
-import Model.Warehouse;
 import View.Report;
 
 public class Main {
@@ -17,25 +17,19 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ControllerWarehouse controllerWarehouse = new ControllerWarehouse();
+		ControllerOrder controllerOrder = new ControllerOrder();
+		ControllerOrderline controllerOrderline = new ControllerOrderline();
 		ControllerProduct controllerProduct = new ControllerProduct();
 		ControllerCustomer controllerCustomer = new ControllerCustomer();
-		
-		
-		controllerWarehouse.addWarehouse("HongKong");
-		Warehouse hongKong = controllerWarehouse.getWarehouses().get(0);
 		
 		Product tele = new Product(1,"Smart TV", 100.0f, "remarks");
 		Product tablet = new Product(2,"Kindle", 50.0f, "remarks");
 		
-		controllerProduct.addProductToWarehouse(tele, hongKong, 10);
-		controllerProduct.addProductToWarehouse(tablet, hongKong, 50);
-		controllerProduct.addProductToWarehouse(tele, hongKong, 5);
+		controllerProduct.addNewProduct(tele, 10);
+		controllerProduct.addNewProduct(tablet, 50);
+		controllerProduct.addMoreUnits(tele, 5);
 		
-		Report report = new Report();
-		report.whatsInWarehouse(hongKong);
-		
-		controllerCustomer.addPersonalCustomer(new ArrayList<Order>(), "Ces", "deliveryAddress", "667250338",
+		controllerCustomer.addPersonalCustomer(new ArrayList<Order>(), "Ces", "deliveryAddress", "000000000",
 				"creditCard");
 		PersonalCustomer somebody = (PersonalCustomer)controllerCustomer.getPersons().get(0);
 		
