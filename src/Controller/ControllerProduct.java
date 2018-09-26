@@ -1,35 +1,52 @@
 package Controller;
 
-import Model.Customer;
-import Model.Order;
+import java.util.HashMap;
+import java.util.Map;
+
 import Model.Product;
-import Model.Warehouse;
 
 public class ControllerProduct {
 	
+	private Map <Product, Integer> inventory;
+	
+//-------------------------------------------------------
+// CONSTRUCTOR
+	
+	public ControllerProduct() {
+	this.inventory = new HashMap<Product, Integer>();
+	}
 	
 //-------------------------------------------------------
 // METHODS	
-	
-	public void addProductToWarehouse(Product product, Warehouse warehouse, Integer quantity) {
-		if(!warehouse.getInventory().keySet().contains(product)){
-			warehouse.getInventory().put(product, quantity);
-		} else {
-			warehouse.getInventory().replace(product, warehouse.getInventory().get(product) + quantity);
-		}
-	}
-	
-	public void createOrder(Customer customer, Boolean isPrepaid, String numberOfOrder) {
-		customer.getOrder().add(new Order(isPrepaid,numberOfOrder));
 		
+	public void addNewProduct(Product product, Integer quantity) {
+		this.inventory.put(product, quantity);
 	}
 	
-	public void addProductToOrder(Order order, Product product, Integer quantity) {
-		if(!order.getOrderline().getOrderlist().containsKey(product)){
-			order.getOrderline().getOrderlist().put(product, quantity);
-		} else {
-			order.getOrderline().getOrderlist().replace(product, order.getOrderline().getOrderlist().get(product) + quantity);
-		}
+	public void addMoreUnits(Product product, Integer quantity) {
+		this.inventory.put(product, getQuantity(product) +quantity);
+	}
+	
+	public Integer getQuantity(Product product) {
+		return this.inventory.get(product);
 	}
 
+	public void takeProductUnits (Product product, Integer quantity) {
+		this.inventory.put(product, getQuantity(product) - quantity);
+	}
+	
+//-------------------------------------------------------
+// GETTERS & SETTERS	
+				
+	public Map<Product, Integer> getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Map<Product, Integer> inventory) {
+		this.inventory = inventory;
+	}
+	
+	
+	
+	
 }

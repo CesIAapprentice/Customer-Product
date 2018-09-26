@@ -27,6 +27,13 @@ public class OrderLine {
 	}
 	
 //--------------------------------------------------
+// METHODS
+	
+	public boolean containsProduct(Product product) {
+		return this.orderlist.containsKey(product);
+	}
+	
+//--------------------------------------------------
 // GETTERS / SETTERS
 
 	public Map<Product, Integer> getOrderlist() {

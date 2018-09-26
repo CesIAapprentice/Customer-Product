@@ -27,7 +27,6 @@ public class ControllerCustomer {
 	public void addCorporateCustomer(List<Order> order, String name, String deliveryAddress, String phone, char creditRating,
 			String contact, Integer creditLimit) {
 		persons.add(new CorporateCustomer(order, name, deliveryAddress, phone, creditRating, contact, creditLimit));
-		
 	}
 	
 //-------------------------------------------------------

@@ -28,7 +28,7 @@ public class Product {
 	private String remarks;
 	
 //--------------------------------------------------
-// CONSTRUCTORS	
+// CONSTRUCTOR
 
 	public Product(Integer id, String name, float price, String remarks) {
 		this.ID = id;
@@ -40,7 +40,6 @@ public class Product {
 //--------------------------------------------------
 // HASHCODE & EQUALS	
 	
-
 	@Override
 	public int hashCode() {
 		if (this.ID!= null){
@@ -66,13 +65,18 @@ public class Product {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 //--------------------------------------------------
 // GETTERS / SETTERS
+	
+	public Integer getID() {
+		return ID;
+	}
 
+	public void setID(Integer iD) {
+		ID = iD;
+	}
+	
 	public String getName() {
 		return name;
 	}
