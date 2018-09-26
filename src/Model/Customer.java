@@ -16,6 +16,7 @@ package Model;
  * 
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Customer {
@@ -30,11 +31,11 @@ public abstract class Customer {
 // ---------------------------------------------------------
 // CONSTRUCTOR		
 	
-	public Customer(List<Order> order, String name, String deliveryAddress, String phone) {
-		this.order = order;
+	public Customer(String name) {
+		this.order = new ArrayList<Order>();
 		this.name = name;
-		this.deliveryAddress = deliveryAddress;
-		this.phone = phone;
+		this.deliveryAddress = "";
+		this.phone = "000000000";
 		this.creditRating = 'Z';
 	}
 	

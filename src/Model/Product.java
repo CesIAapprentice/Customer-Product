@@ -100,4 +100,11 @@ public class Product {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
+//--------------------------------------------------
+// TOSTRING
+	
+	public String toString() {
+		return this.name + " " + this.price + "€" ;
+	}
 }
