@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class UI {
 	
 	IO io;
-	Customer customer = new Customer();
 	Menus menus = new Menus();
 	Scanner reader;
 	

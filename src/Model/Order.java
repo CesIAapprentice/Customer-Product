@@ -119,4 +119,14 @@ public class Order {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+
+	public boolean isClosed() {
+		return isClosed;
+	}
+
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
+	}
+	
+	
 }

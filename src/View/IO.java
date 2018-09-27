@@ -1,9 +1,11 @@
 package View;
 
+import java.util.List;
 import java.util.Scanner;
 
 import Controller.*;
 import Model.Customer;
+import Model.Order;
 import Model.Product;
 
 public class IO {
@@ -85,14 +87,41 @@ public class IO {
 	public void addToBasket() {
 		System.out.print("Enter name for the good:");
 		String productName = reader.nextLine();
-		Product productToBuy = this.controllerproduct.getProductByName(productName.toLowerCase());
+		Product product = getProductByName(productName);
+		Customer customer = getCustomerByName(this.loggedIn);
+		List<Order> customerOrders = getOrderlistFromCustomer(customer);
+		Order lastOrder = getLastOrderFromCustomer(customerOrders);
+		if(isOrderClosed(lastOrder)) {
+			createOrder(customer);
+		}
 		
 	}
 	
-	public Order getOrder() {
-		Customer customer = this.controllercustomer.getCustomer(this.loggedIn);
-		
+	public Product getProductByName(String name) {
+		return this.controllerproduct.getProductByName(name.toLowerCase());
 	}
+	
+	public Customer getCustomerByName(String name) {
+		return this.controllercustomer.getCustomer(this.loggedIn);
+	}
+	
+	public List<Order> getOrderlistFromCustomer(Customer customer) {
+		return customer.getOrder();
+	}
+	
+	public Order getLastOrderFromCustomer(List<Order> orderlist) {
+		return orderlist.get(orderlist.size()-1);
+	}
+	
+	public boolean isOrderClosed (Order order) {
+		return order.isClosed();
+	}
+	
+	public void createOrder(Customer customer) {
+		this.controllercustomer.createNewOrder (customer);
+	}
+	
+	
 	
 // -------------------------------------------------------------------------------------------------
 // GETTERS & SETTERS
