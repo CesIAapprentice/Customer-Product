@@ -27,27 +27,22 @@ package Model;
  * 
  */
 
-
-
-
-
-import java.util.List;
-
 public class CorporateCustomer extends Customer{
 
 	private String contact;
-	private Integer creditLimit;
 	private char creditRating;
+	private Integer creditLimit;
 	
 // ---------------------------------------------------------
 // CONSTRUCTOR	
 		
-	public CorporateCustomer(List<Order> order, String name, String deliveryAddress, String phone, char creditRating,
-								String contact, Integer creditLimit) {
-		super(order, name, deliveryAddress, phone);
-		this.creditRating = creditRating;
+	public CorporateCustomer(String name, String deliveryAddress, String phone, String contact) {
+		super(name);
+		super.setDeliveryAddress(deliveryAddress);
+		super.setPhone(phone);
 		this.contact = contact;
-		this.creditLimit = creditLimit;
+		this.creditRating = 'Z';
+		this.creditLimit = 1000;
 	}
 	
 // ---------------------------------------------------------

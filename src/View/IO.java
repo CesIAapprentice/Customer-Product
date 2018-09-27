@@ -3,33 +3,77 @@ package View;
 import java.util.Scanner;
 
 import Controller.*;
+import Model.Customer;
 import Model.Product;
 
 public class IO {
 	
-	Scanner reader;
-	ControllerCustomer controllercustomer;
-	ControllerProduct controllerproduct;
+	private Scanner reader;
+	private String loggedIn;
+	private ControllerCustomer controllercustomer;
+	private ControllerProduct controllerproduct;
 	
 //-------------------------------------------------------
 // CONSTRUCTOR
 	
 	public IO(Scanner reader) {
 		
+		this.loggedIn = "";
 		this.reader = reader;
 		this.controllercustomer = new ControllerCustomer();
-		initializeCustomer(this.controllercustomer);
 		this.controllerproduct = new ControllerProduct();
 	}
 	
 //-------------------------------------------------------
 // METHODS
 	
-	public void initializeCustomer(ControllerCustomer controllercustomer) {
-		controllercustomer.
+	public void login() {
+		String name = askCustomerName();
+		Customer customer = this.controllercustomer.getCustomer(name);
+		if(customer != null) {
+			System.out.println("Welcome " + name);
+			this.loggedIn = name;
+		} else {
+			System.out.println(name + " not found");
+		}
 	}
 	
+	public boolean isLoggedIn() {
+		return !this.loggedIn.equals("");
+	}
 	
+	public String askCustomerName() {
+		System.out.print("Enter your name: ");
+		return reader.nextLine();
+	}
+	
+	public void createCustomer() {
+		
+		String type = reader.nextLine();
+		System.out.print("Enter your name: ");
+		String name = reader.nextLine();
+		System.out.print("Enter delivery address: ");
+		String address = reader.nextLine();
+		System.out.println("Enter phone number: ");
+		String phone = reader.nextLine();
+		
+		while(true) {
+			System.out.print("Enter type of customer (personal/corporate): ");
+			if(type.toLowerCase().equals("corporate")) {
+				System.out.print("Enter contact: ");
+				String contact = reader.nextLine();
+				this.controllercustomer.addCorporateCustomer(name, address, phone, contact);
+				break;
+			} else if(type.toLowerCase().equals("personal")) {
+				System.out.println("Enter creditCard: ");
+				String creditCard = reader.nextLine();
+				this.controllercustomer.addPersonalCustomer(name, address, phone, creditCard);
+				break;
+			} else {
+				System.out.println("Not a suitable type of customer");
+			}
+		}
+	}
 	
 	public void printStore() {
 		for(Product product : this.controllerproduct.getProducts()) {
@@ -41,8 +85,25 @@ public class IO {
 	public void addToBasket() {
 		System.out.print("Enter name for the good:");
 		String productName = reader.nextLine();
-		Product productToBuy = this.controllerproduct.getProductByName(productName);
+		Product productToBuy = this.controllerproduct.getProductByName(productName.toLowerCase());
 		
 	}
+	
+	public Order getOrder() {
+		Customer customer = this.controllercustomer.getCustomer(this.loggedIn);
+		
+	}
+	
+// -------------------------------------------------------------------------------------------------
+// GETTERS & SETTERS
 
+	public String getLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(String loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+	
+	
 }

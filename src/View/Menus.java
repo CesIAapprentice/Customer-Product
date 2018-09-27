@@ -28,7 +28,7 @@ public class Menus {
 		System.out.println("1. Enter a good to buy");
 		System.out.println("2. Remove an Item from your basket");
 		System.out.println("3. Print your basket");
-		System.out.println("x. Quit");
+		System.out.println("x. Back");
 		System.out.println("");
 		System.out.print("your choice:");
 	}

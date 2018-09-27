@@ -41,6 +41,7 @@ public class Order {
 	
 	private Date dateReceived;
 	private boolean isPrepaid;
+	private boolean isClosed;
 	private String num;
 	private float price;
 	
@@ -51,6 +52,7 @@ public class Order {
 		this.orderline = new OrderLine();
 		this.dateReceived = new Date(Calendar.getInstance().getTime().getTime());
 		this.isPrepaid = isPrepaid;
+		this.isClosed = false;
 		this.num = num;
 		this.price = 0.0f;
 	}
@@ -59,6 +61,7 @@ public class Order {
 		this.orderline = new OrderLine();
 		this.dateReceived = dateReceived;
 		this.isPrepaid = isPrepaid;
+		this.isClosed = false;
 		this.num = num;
 		this.price = 0.0f;
 	}

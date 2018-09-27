@@ -5,40 +5,48 @@ import java.util.List;
 
 import Model.CorporateCustomer;
 import Model.Customer;
-import Model.Order;
 import Model.PersonalCustomer;
 
 public class ControllerCustomer {
 	
-	List<Customer> persons;
+	List<Customer> customers;
 
 	public ControllerCustomer() {
-		this.persons = new ArrayList<Customer>();
+		this.customers = new ArrayList<Customer>();
 	}
 	
 //-------------------------------------------------------
 // METHODS	
 	
-	public void addPersonalCustomer(List<Order> order, String name, String deliveryAddress, String phone,
-			String creditCard) {
-		persons.add(new PersonalCustomer(order, name, deliveryAddress, phone, creditCard));
+	public void addPersonalCustomer(String name, String deliveryAddress, String phone, String creditCard) {
+		customers.add(new PersonalCustomer(name, deliveryAddress, phone, creditCard));
 	}
 	
-	public void addCorporateCustomer(List<Order> order, String name, String deliveryAddress, String phone, char creditRating,
-			String contact, Integer creditLimit) {
-		persons.add(new CorporateCustomer(order, name, deliveryAddress, phone, creditRating, contact, creditLimit));
+	public void addCorporateCustomer(String name, String deliveryAddress, String phone, String contact) {	
+		customers.add(new CorporateCustomer(name, deliveryAddress, phone, contact));
 	}
+	
 	
 //-------------------------------------------------------
-// METHODS	
+// GETTERS & SETTERS	
 
-	public List<Customer> getPersons() {
-		return persons;
+	public List<Customer> getCustomers() {
+		return customers;
 	}
 
-	public void setPersons(List<Customer> persons) {
-		this.persons = persons;
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
 	}
+	
+	public Customer getCustomer(String name) {
+		for(Customer customer : this.customers) {
+			if(customer.getName().equals(name)){
+				return customer;
+			}
+		}
+		return null;
+	}
+	
 	
 	
 	

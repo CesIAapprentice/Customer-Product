@@ -20,9 +20,6 @@ package Model;
  * 
  */
 
-
-import java.util.List;
-
 public class PersonalCustomer extends Customer{
 	
 	private String creditCard;
@@ -30,9 +27,10 @@ public class PersonalCustomer extends Customer{
 // ---------------------------------------------------------
 // CONSTRUCTOR		
 
-	public PersonalCustomer(List<Order> order, String name, String deliveryAddress, String phone,
-							String creditCard) {
-		super(order, name, deliveryAddress, phone);
+	public PersonalCustomer(String name, String deliveryAddress, String phone, String creditCard) {
+		super(name);
+		super.setDeliveryAddress(deliveryAddress);
+		super.setPhone(phone);
 		this.creditCard = creditCard;
 	}
 	

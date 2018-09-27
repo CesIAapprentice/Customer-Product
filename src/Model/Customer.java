@@ -26,7 +26,6 @@ public abstract class Customer {
 	private String name;
 	private String deliveryAddress;
 	private String phone;
-	private char creditRating;
 	
 // ---------------------------------------------------------
 // CONSTRUCTOR		
@@ -36,7 +35,6 @@ public abstract class Customer {
 		this.name = name;
 		this.deliveryAddress = "";
 		this.phone = "000000000";
-		this.creditRating = 'Z';
 	}
 	
 //--------------------------------------------------
@@ -72,13 +70,5 @@ public abstract class Customer {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public char getCreditRating() {
-		return creditRating;
-	}
-
-	public void setCreditRating(char creditRating) {
-		this.creditRating = creditRating;
 	}
 }

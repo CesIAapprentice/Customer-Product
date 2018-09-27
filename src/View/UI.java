@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class UI {
 	
 	IO io;
+	Customer customer = new Customer();
 	Menus menus = new Menus();
 	Scanner reader;
 	
@@ -24,28 +25,34 @@ public class UI {
 	}
 	
 	public void setCustomerMenu() {
-		this.menus.setCustomer();
-		String userchoice=reader.nextLine();
-		
-		if(userchoice.equals("1")){
-			this.io.checkValidName(userchoice);
-				
+		while(true) {
+			
+			this.menus.setCustomer();
+			String userchoice=reader.nextLine();
+			
+			if(userchoice.equals("1")){
+				this.io.login();
 			}
-		}
 		
-		if(userchoice.equals("2")){
-			buyMenu();
-		}
+			if(userchoice.equals("2")){
+				this.io.createCustomer();
+			}
 		
-		if(userchoice.equals("x")){
-			break;
-		}
-		else {
-			System.out.println("Unknown Command");
+			if(userchoice.equals("3")){
+				break;
+			}
+			
+			if(userchoice.equals("x")) {
+				System.out.println("Bye");
+				// and quit the program
+			}
+			else {
+				System.out.println("Unknown Command");
+			}
 		}
 	}
 	
-	public void storeMenu(Customer customer) {
+	public void storeMenu() {
 		while (true) {
 			this.menus.storeMenu();
 			String userchoice=reader.nextLine();
@@ -55,15 +62,20 @@ public class UI {
 			}
 			
 			if(userchoice.equals("2")){
+				while(this.io.isLoggedIn()) {
+					System.out.println("Please, login first");
+					this.io.login();
+				}
 				buyMenu();
 			}
 			
 			if(userchoice.equals("3")){
-				this.menus.payMenu();
+				payMenu();
 			}
 			
 			if(userchoice.equals("x")){
-				break;
+				System.out.println("Bye");
+				// and quit the program
 			}
 			else {
 				System.out.println("Unknown Command");
@@ -71,7 +83,7 @@ public class UI {
 		}
 	}
 	
-	public void buyMenu(Customer customer) {
+	public void buyMenu() {
 		while (true) {
 			this.menus.buyMenu();
 			String userchoice=reader.nextLine();
