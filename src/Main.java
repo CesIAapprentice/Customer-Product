@@ -7,9 +7,9 @@ import Controller.ControllerCustomer;
 import Controller.ControllerOrder;
 import Controller.ControllerOrderline;
 import Controller.ControllerProduct;
-import Model.Order;
-import Model.PersonalCustomer;
-import Model.Product;
+import Model.Customer.PersonalCustomer;
+import Model.Order.Order;
+import Model.Product.Product;
 import View.Report;
 
 public class Main {

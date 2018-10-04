@@ -1,4 +1,4 @@
-package Model;
+package Model.Customer;
 /*
  * abstract class Customer
  * Generic customer, with parameters valid
@@ -18,6 +18,8 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Model.Order.Order;
 
 public abstract class Customer {
 	

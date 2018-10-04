@@ -2,6 +2,8 @@ package View;
 
 import java.util.Scanner;
 
+import FrontController.IO;
+
 public class UI {
 	
 	IO io;

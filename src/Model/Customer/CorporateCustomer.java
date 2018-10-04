@@ -1,4 +1,4 @@
-package Model;
+package Model.Customer;
 /*
  * ###extends Customer###
  * A particular type of customer

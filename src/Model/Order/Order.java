@@ -1,4 +1,4 @@
-package Model;
+package Model.Order;
 /*
  * Generic class for orders
  * where to store general data

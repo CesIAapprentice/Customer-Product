@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import Model.Product;
+import Model.Product.Product;
 
 public class ControllerProduct {
 	

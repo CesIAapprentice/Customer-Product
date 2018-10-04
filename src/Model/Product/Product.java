@@ -1,4 +1,4 @@
-package Model;
+package Model.Product;
 /*
  * Order details, 
  * just to store items purchased

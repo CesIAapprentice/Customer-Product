@@ -3,8 +3,8 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.OrderLine;
-import Model.Product;
+import Model.Order.OrderLine;
+import Model.Product.Product;
 
 public class ControllerOrderline {
 	

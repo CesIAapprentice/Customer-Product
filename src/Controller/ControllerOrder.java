@@ -3,8 +3,8 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Customer;
-import Model.Order;
+import Model.Customer.Customer;
+import Model.Order.Order;
 
 public class ControllerOrder {
 	

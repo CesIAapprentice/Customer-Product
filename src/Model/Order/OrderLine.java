@@ -1,4 +1,4 @@
-package Model;
+package Model.Order;
 /*
  * Order details, 
  * just to store items purchased
@@ -14,6 +14,8 @@ package Model;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import Model.Product.Product;
 
 public class OrderLine {
 	
